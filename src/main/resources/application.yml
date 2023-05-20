@@ -1,0 +1,16 @@
+project: desofme
+
+spring:
+  application:
+    name: spring-vault
+  cloud:
+    vault:
+      host: localhost
+      port: 8200
+      token: vault_token
+      app-role:
+        role: token
+      scheme: http
+  config:
+    import:
+      - "vault:/secret/${project}/${spring.application.name}/application-${spring.profiles.active}"
